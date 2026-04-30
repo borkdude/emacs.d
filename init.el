@@ -279,7 +279,8 @@
 ;; flymake — built-in on-the-fly syntax checking (LSP feeds diagnostics into it)
 (add-hook 'prog-mode-hook #'flymake-mode)
 
-(set-face-attribute 'flymake-warning nil :underline '(:style wave :color "#fff68f"))
+(with-eval-after-load 'flymake
+  (set-face-attribute 'flymake-warning nil :underline '(:style wave :color "#fff68f")))
 
 ;; Show flymake error below the current line only, as inline overlay
 (defvar-local my/flymake-inline-ov nil)
@@ -552,7 +553,8 @@
       '((javascript "https://github.com/tree-sitter/tree-sitter-javascript")
         (html "https://github.com/tree-sitter/tree-sitter-html")
         (css "https://github.com/tree-sitter/tree-sitter-css")
-        (json "https://github.com/tree-sitter/tree-sitter-json")))
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
 ;; Auto-install any tree-sitter grammars listed above that aren't present yet
 (dolist (lang (mapcar #'car treesit-language-source-alist))
@@ -564,6 +566,9 @@
 
 ;; JSON
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
+
+;; YAML
+(add-to-list 'auto-mode-alist '("\\.ya?ml\\'" . yaml-ts-mode))
 
 (add-hook 'js-ts-mode-hook #'lsp)
 (add-hook 'js-ts-mode-hook
