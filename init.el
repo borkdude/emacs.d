@@ -819,8 +819,4 @@
 (use-package reveal-in-osx-finder
   :if (eq system-type 'darwin))
 
-(use-package vertico
-  :ensure t
-  :config (vertico-mode))
-
 ;;; init.el ends here
