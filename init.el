@@ -845,6 +845,7 @@
   ;; Modes missing from copilot-indentation-alist fall back to tab-width (8)
   ;; and print a warning; give the ones I use a real offset and mute the rest.
   (copilot-indent-offset-warning-disable t)
+  (copilot-max-char-warning-disable t)
   :config
   (dolist (entry '((clojure-mode 2)
                    (clojurescript-mode 2)
