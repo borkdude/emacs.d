@@ -508,6 +508,8 @@
 (use-package cider
   :after clojure-ts-mode
   :config
+  ;; https://github.com/clojure-emacs/cider/issues/4233
+  (setq cider-font-lock-dynamically nil)
   (define-key clojure-mode-map (kbd "M-.") #'find-definition)
   (define-key cider-mode-map (kbd "M-.") #'find-definition)
   (define-key clojurec-mode-map (kbd "M-.") #'find-definition)
